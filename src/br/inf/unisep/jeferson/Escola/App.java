@@ -61,19 +61,92 @@ public class App {
                     Console.Escreverln("2 - Média turma");
                     Console.Escreverln("3 - Média aluno");
                     Console.Escreverln("4 - Quantidade de Alunos matriculados");
-                    Console.Escreverln("5 - Quantidade de Alunos reprovados");
-                    Console.Escreverln("6 - Porcentagem de alunos aprovados");
-                    Console.Escreverln("7 - Porcentagem de alunos reprovados");
-                    Console.Escreverln("8 - Quantidade de turmas cadastradas");
+                    Console.Escreverln("5 - Quantidade de Alunos aprovados");
+                    Console.Escreverln("6 - Quantidade de Alunos reprovados");
+                    Console.Escreverln("7 - Porcentagem de alunos aprovados");
+                    Console.Escreverln("8 - Porcentagem de alunos reprovados");
+                    Console.Escreverln("9 - Quantidade de turmas cadastradas");
                     
                     digitado = Console.Ler();
                     switch (digitado){
                         case "1" :
+                            double media = 0;
+                            for (Turma tm : inst.turmas) {
+                                media = media + tm.mediaGeral();
+                            }
+                            Console.Escreverln("Média da escola: " + media / inst.turmas.size());
 
                         case "2" :
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                    Console.Escreverln("Media da turma: " + tm.mediaGeral());
+                                    break;
+                                }
+                            }
+                            
+                        case "3" :
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                    Console.Escreverln("Digite o nome do aluno: ");
+                                    int codigo = tm.getAluno(Console.Ler());
+                                }
+                            }
+                            
+                        case "4" :
+                            double quantidade = 0;
+                            for (Turma tm : inst.turmas) {
+                                quantidade = quantidade + tm.quantidadeAlunos();
+                            }
+                            
+                            Console.Escreverln("Quantidade de alunos: " + quantidade);
+                            break;
+                            
+                        case "5" :
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                    Console.Escreverln("Quantidade de alunos aprovados: " + tm.quantidadeAlunosAprovados());
+                                    break;
+                                }
+                            }
+                            
+                        case "6" :
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                Console.Escreverln("Quantidade de alunos reprovados: " + tm.quantidadeAlunosReprovados());
+                                    break;
+                                }
+                            }
+
+                        case "7" :
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                    Console.Escreverln("Porcentagem de alunos aprovados: " + tm.porcentagemAlunosAprovados());
+                                    break;
+                                }
+                            }
                             
                         case "8" :
-                            Console.Escreverln("" + inst.turmas.size());
+                            Console.Escreverln("Digite a turma: ");
+                            digitado = Console.Ler();
+                            for (Turma tm : inst.turmas) {
+                                if (digitado.equalsIgnoreCase(tm.getDescricao())){
+                                    Console.Escreverln("Porcentagem de alunos reprovados: " + tm.porcentagemAlunosReprovados());
+                                    break;
+                                }
+                            }
+
+                        case "9" :
+                            Console.Escreverln("quantidade de turmas cadastradas: " + inst.turmas.size());
                             
                     }
                     
