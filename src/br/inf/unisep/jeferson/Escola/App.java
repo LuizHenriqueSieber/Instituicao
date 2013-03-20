@@ -69,8 +69,7 @@ public class App {
                     digitado = Console.Ler();
                     switch (digitado){
                         case "1" :
-                            
-                            
+
                         case "2" :
                             
                         case "8" :
