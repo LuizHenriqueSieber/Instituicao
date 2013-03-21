@@ -102,12 +102,21 @@ public class Turma {
         }
     }
     
-    public int getAluno(String nome){
+    public int getCodigoAluno(String nome){
         for (Aluno al : alunos){
             if (al.getNome().equals(nome)){
                 return al.getCodigo();
             }
         }
         return 0;
+    }
+    
+    public Aluno getAluno(String nome){
+        for (Aluno al : alunos){
+            if (al.getNome().equalsIgnoreCase(nome)){
+                return al;
+            }
+        }
+        return null;
     }
 }
