@@ -18,7 +18,7 @@ public class Instituicao {
     
     public void fechaTurma(String descricao){
         for (Turma tur : turmas){
-            if (tur.getDescricao().equals(descricao)){
+            if (tur.getDescricao().equalsIgnoreCase(descricao)){
                 turmas.remove(tur);
             }
         }

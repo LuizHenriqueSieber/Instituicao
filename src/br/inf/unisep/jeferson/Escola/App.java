@@ -25,17 +25,22 @@ public class App {
                     if (subEscolha.equals("3")){
                         break;
                     }
-                    Console.escreverln("Digite a série da turma: ");
                     if (subEscolha.equals("1")) {
+                        Console.escreverln("Digite a série da turma: ");
                         Turma tur = new Turma(Console.ler());
                         inst.abrirTurma(tur);
                     } else {
-                        inst.fechaTurma(Console.ler());
+                        if (temTurmaCadastrada(inst)){
+                            Console.escreverln("Digite a série da turma: ");
+                            inst.fechaTurma(Console.ler());
+                        } else {
+                            Console.escreverln("É necessário cadastrar uma turma antes de fecha-la.");
+                        }
                     }
                     break;
 
                 case "2":
-                    if (inst.turmas.size() > 0) {
+                    if (temTurmaCadastrada(inst)) {
                         Console.escreverln("1 - Matricular aluno");
                         Console.escreverln("2 - Cancelar matrícula");
                         Console.escreverln("3 - Voltar");
@@ -176,4 +181,9 @@ public class App {
             Console.escreverln(" ");
         } while (!escolha.equals("4"));
     }
+   
+    public static boolean temTurmaCadastrada(Instituicao inst){   
+        return inst.turmas.size() > 0;
+    }
+
 }
