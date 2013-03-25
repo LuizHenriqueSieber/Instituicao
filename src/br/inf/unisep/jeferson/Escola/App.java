@@ -4,6 +4,7 @@ import br.com.fadanelli.utilitarios.io.Console;
 
 public class App {
 
+    @SuppressWarnings("empty-statement")
     public static void main(String args[]) {
         String escolha, subEscolha;
 
@@ -94,6 +95,10 @@ public class App {
                                     if (tm.getDescricao().equalsIgnoreCase(Console.ler())) {
                                         Console.escreverln("Digite o nome do aluno: ");
                                         Aluno aluno = tm.getAluno(Console.ler());;
+                                        if (aluno == null){
+                                            Console.escreverln("Aluno não existe!");
+                                            break;
+                                        }
                                         Console.escreverln("Digite a nota: ");
                                         digitado = Console.ler();
                                         float nota = Float.parseFloat(digitado);
@@ -133,6 +138,7 @@ public class App {
                                 media = media + tm.mediaGeral();
                             }
                             Console.escreverln("Média da escola: " + media / inst.turmas.size());
+                            break;
 
                         case "2":
                             Console.escreverln("Digite a turma: ");
@@ -143,6 +149,7 @@ public class App {
                                     break;
                                 }
                             }
+                            break;
 
                         case "3":
                             Console.escreverln("Digite a turma: ");
@@ -154,6 +161,7 @@ public class App {
                                     Console.escreverln("Média do aluno: " + aluno.getMedia());
                                 }
                             }
+                            break;
 
                         case "4":
                             double quantidade = 0;
@@ -173,6 +181,7 @@ public class App {
                                     break;
                                 }
                             }
+                            break;
 
                         case "6":
                             Console.escreverln("Digite a turma: ");
@@ -183,6 +192,7 @@ public class App {
                                     break;
                                 }
                             }
+                            break;
 
                         case "7":
                             Console.escreverln("Digite a turma: ");
@@ -193,6 +203,7 @@ public class App {
                                     break;
                                 }
                             }
+                            break;
 
                         case "8":
                             Console.escreverln("Digite a turma: ");
@@ -203,9 +214,11 @@ public class App {
                                     break;
                                 }
                             }
+                            break;
 
                         case "9":
                             Console.escreverln("quantidade de turmas cadastradas: " + inst.turmas.size());
+                            break;
 
                     }
 
@@ -226,5 +239,4 @@ public class App {
     public static boolean temTurmaCadastrada(Instituicao inst){   
         return inst.turmas.size() > 0;
     }
-    
 }
