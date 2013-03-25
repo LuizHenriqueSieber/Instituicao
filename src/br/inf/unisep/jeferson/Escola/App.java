@@ -43,34 +43,76 @@ public class App {
                     if (temTurmaCadastrada(inst)) {
                         Console.escreverln("1 - Matricular aluno");
                         Console.escreverln("2 - Cancelar matrícula");
-                        Console.escreverln("3 - Voltar");
+                        Console.escreverln("3 - Lançar nota G1");
+                        Console.escreverln("4 - Lançar nota G2");                        
+                        Console.escreverln("5 - Voltar");
+                        
                         String digitado = Console.ler();
                         switch (digitado) {
                             case "1":
                                 Console.escreverln("Digite a turma do aluno: ");
                                 for (Turma tm : inst.turmas) {
-                                    if (tm.getDescricao().equals(Console.ler())) {
+                                    if (tm.getDescricao().equalsIgnoreCase(Console.ler())) {
                                         Console.escreverln("Digite o nome do aluno: ");
                                         Aluno alunoNovo = new Aluno(Console.ler());
                                         tm.matricula(alunoNovo);
                                     }
                                 }
+                                break;
 
                             case "2":
                                 Console.escreverln("Digite a turma do aluno: ");
                                 for (Turma tm : inst.turmas) {
-                                    if (tm.getDescricao().equals(Console.ler())) {
+                                    if (tm.getDescricao().equalsIgnoreCase(Console.ler())) {
                                         Console.escreverln("Digite o nome do aluno: ");
                                         tm.cancelarMatricula(tm.getCodigoAluno(Console.ler()));
                                     }
                                 }
+                                break;
+
+                            case "3" :
+                                Console.escreverln("Digite a turma do aluno: ");
+                                for (Turma tm : inst.turmas) {
+                                    if (tm.getDescricao().equalsIgnoreCase(Console.ler())) {
+                                        Console.escreverln("Digite o nome do aluno: ");
+                                        Aluno aluno = tm.getAluno(Console.ler());
+                                        Console.escreverln("Digite a nota: ");
+                                        digitado = Console.ler();
+                                        float nota = Float.parseFloat(digitado);
+                                        if (nota > 0 && nota <= 10){
+                                            aluno.setG1(nota);
+                                        } else {
+                                            Console.escreverln("Nota inválida");
+                                        }
+                                    }
+                                }
+                                break;
+                                
+                            case "4" :
+                                Console.escreverln("Digite a turma do aluno: ");
+                                for (Turma tm : inst.turmas) {
+                                    if (tm.getDescricao().equalsIgnoreCase(Console.ler())) {
+                                        Console.escreverln("Digite o nome do aluno: ");
+                                        Aluno aluno = tm.getAluno(Console.ler());;
+                                        Console.escreverln("Digite a nota: ");
+                                        digitado = Console.ler();
+                                        float nota = Float.parseFloat(digitado);
+                                        if (nota > 0 && nota <= 10){
+                                            aluno.setG2(nota);
+                                        } else {
+                                            Console.escreverln("Nota inválida");
+                                        }
+                                    }
+                                }
+                                break;
+
                             default:
                                 break;
                         }
                     } else{
                         Console.escreverln("Cadastre a turma antes de inserir alunos!");
-                        break;
                     }
+                    break;
 
                 case "3":
                     Console.escreverln("1 - Média escola");
@@ -167,7 +209,6 @@ public class App {
 
                     }
 
-
                     break;
 
                 case "4":
@@ -185,5 +226,5 @@ public class App {
     public static boolean temTurmaCadastrada(Instituicao inst){   
         return inst.turmas.size() > 0;
     }
-
+    
 }
